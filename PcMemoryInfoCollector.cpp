@@ -34,11 +34,17 @@ void CPcMemoryInfoCollector::findAmountOfAllAvailableMemory() {
 
 void CPcMemoryInfoCollector::findMaxSizeOfSingleBlockOnHeap() {
     char* p = nullptr;
+    constexpr uint64_t TEST_VAL = 15000000000;
+    uint64_t cntr = TEST_VAL;
 
     try {
 
-        for (int i = 100000; i < 1000000000; i+=10) {
-            p = new char[i];
+        for (; cntr < 150000000000; cntr+=100000) {
+            p = new char[cntr];
+
+            p[cntr-1] = 34;
+
+            std::cout << p[cntr-1];
 
             delete[] p;
         }
@@ -47,6 +53,7 @@ void CPcMemoryInfoCollector::findMaxSizeOfSingleBlockOnHeap() {
     catch (...)
     {
         std::cout << "Exception: ";
+        maxSizeOfSingleBlock = cntr;
     }
 }
 
