@@ -1,0 +1,5 @@
+Using your favorite platform (C#, Java, JavaScript, Python) detect:
+- Amount of available memory to allocate;
+- Max size of single block available in heap to allocate
+- Compare with physically available memory
+- Take a metrics for consumed time
